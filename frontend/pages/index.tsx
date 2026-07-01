@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Activity, AlertTriangle, ChevronRight, DollarSign, Loader2, RefreshCw, Shield, Zap } from 'lucide-react'
+import DarkModeToggle from '../components/DarkModeToggle'
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { format, formatDistanceToNow } from 'date-fns'
 
@@ -330,10 +331,13 @@ export default function DashboardPage() {
             <div className="text-xs uppercase tracking-[0.32em] text-zinc-500">AgentWatch</div>
             <h1 className="text-2xl font-semibold text-white">Reliability, safety, and observability</h1>
           </div>
-          <button onClick={() => { refreshSummary(); refreshSessions() }} aria-label="Refresh dashboard data" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/10 hover:text-white">
-            <RefreshCw size={14} />
-            Refresh
-          </button>
+          <div className="flex items-center gap-3">
+            <DarkModeToggle />
+            <button onClick={() => { refreshSummary(); refreshSessions() }} aria-label="Refresh dashboard data" className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/10 hover:text-white">
+              <RefreshCw size={14} />
+              Refresh
+            </button>
+          </div>
         </div>
       </header>
 

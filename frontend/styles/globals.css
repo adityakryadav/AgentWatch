@@ -2,8 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Dark (default) ── */
 :root {
   color-scheme: dark;
+  --bg-body: #0a0b10;
+  --bg-body-end: #0b0c11;
+  --color-text: #f4f4f5;
+  --border-color: rgba(255,255,255,0.10);
+}
+
+/* ── Light overrides ── */
+html:not(.dark) {
+  color-scheme: light;
+  --bg-body: #f0f2f5;
+  --bg-body-end: #e8eaf0;
+  --color-text: #111318;
+  --border-color: rgba(0,0,0,0.10);
 }
 
 html,
@@ -17,9 +31,17 @@ body {
   background:
     radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 28%),
     radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 24%),
-    linear-gradient(180deg, #0a0b10 0%, #11131a 54%, #0b0c11 100%);
-  color: #f4f4f5;
+    linear-gradient(180deg, var(--bg-body) 0%, #11131a 54%, var(--bg-body-end) 100%);
+  color: var(--color-text);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+html:not(.dark) body {
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.10), transparent 28%),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 24%),
+    linear-gradient(180deg, var(--bg-body) 0%, #dce0ea 54%, var(--bg-body-end) 100%);
 }
 
 * {
@@ -33,6 +55,14 @@ body {
     #09090b;
 }
 
+html:not(.dark) .bg-agentwatch {
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.10), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(251, 146, 60, 0.08), transparent 22%),
+    #f0f2f5;
+}
+
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
 }
+
